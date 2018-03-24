@@ -11,13 +11,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+let data = {};
+
 app.get('/', (req, res) => {
-    res.send('Hello');
+    res.send(data);
 });
 
 app.post('/', (req, res) => {
-    console.log(req.body);
-    res.send(req.body);
+    data = req.body;
+    res.sendSuccess(200);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
